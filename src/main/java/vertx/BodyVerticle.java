@@ -5,13 +5,16 @@ import io.vertx.core.Promise;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
+import io.vertx.mysqlclient.MySQLPool;
 
 public class BodyVerticle extends AbstractVerticle{
 
     Router router;
 
+
     @Override
     public void start(Promise<Void> startPromise){
+
         router = Router.router(vertx);
 
         //开启获取Body参数
