@@ -40,14 +40,10 @@ public class OperationServiceImpl  implements OperationService {
 		getConfig().compose(config->getConn(config))//获取配置文件->获取连接对象
 				.compose(conn->getRows(conn,offset))//执行sql获取结果
 				.onSuccess(rows -> {
-					List<JsonObject> list = new ArrayList<>();
-					rows.forEach(item->{
-						JsonObject obj = new JsonObject();
-						obj.put("id",obj.getValue("id"));
-						obj.put("name",obj.getValue("name"));
-						list.add(obj);
-					});
 					promise.complete(rows);
+				})
+				.onFailure(t->{
+					promise.fail(t.getMessage());
 				});
 		return promise.future();
 	}
@@ -62,7 +58,7 @@ public class OperationServiceImpl  implements OperationService {
 				JsonObject config = ar.result();
 				promise.complete(config);
 			}else{
-				ar.failed();
+				promise.fail(ar.cause());
 			}
 		});
 		return promise.future();
@@ -86,7 +82,7 @@ public class OperationServiceImpl  implements OperationService {
 				SqlConnection conn = ar.result();
 				promise.complete(conn);
 			}else{
-				ar.failed();
+				promise.fail(ar.cause());
 			}
 		});
 		return promise.future();
@@ -96,7 +92,7 @@ public class OperationServiceImpl  implements OperationService {
 	private Future<RowSet<Row>> getRows(SqlConnection conn, Integer offset){
 		Promise<RowSet<Row>> promise = Promise.promise();
 
-		conn.preparedQuery("SELECT id,name FROM users limit 10 offset = ?")
+		conn.preparedQuery("SELECT id,name FROM users limit 10 offset ?")
 				.execute(Tuple.of(offset), ar->{
 					conn.close();
 					if(ar.succeeded()){

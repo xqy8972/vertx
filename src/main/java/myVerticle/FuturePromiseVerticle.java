@@ -1,19 +1,10 @@
 package myVerticle;
 
-import io.vertx.config.ConfigRetriever;
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Future;
 import io.vertx.core.Promise;
-import io.vertx.core.Vertx;
-import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
-import io.vertx.mysqlclient.MySQLConnectOptions;
-import io.vertx.mysqlclient.MySQLPool;
-import io.vertx.sqlclient.*;
 import myVerticle.service.OperationService;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class FuturePromiseVerticle extends AbstractVerticle {
 
