@@ -1,9 +1,9 @@
-package myVerticle;
+package myServer;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.ext.web.Router;
-import myVerticle.service.OperationService;
+import myServer.service.OperationService;
 
 
 public class FuturePromiseVerticle extends AbstractVerticle {

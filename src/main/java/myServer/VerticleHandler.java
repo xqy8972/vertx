@@ -1,16 +1,13 @@
-package myVerticle;
+package myServer;
 
-import io.vertx.core.Future;
-import io.vertx.core.Promise;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.sqlclient.Row;
 import io.vertx.sqlclient.RowSet;
-import myVerticle.service.OperationService;
+import myServer.service.OperationService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class VerticleHandler {
 

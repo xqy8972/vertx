@@ -1,10 +1,10 @@
-package myVerticle.service;
+package myServer.service;
 
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
 import io.vertx.sqlclient.Row;
 import io.vertx.sqlclient.RowSet;
-import myVerticle.service.imp.OperationServiceImpl;
+import myServer.service.imp.OperationServiceImpl;
 
 public interface OperationService {
 

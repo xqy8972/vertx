@@ -1,4 +1,4 @@
-package myVerticle.service.imp;
+package myServer.service.imp;
 
 import io.vertx.config.ConfigRetriever;
 import io.vertx.core.Future;
@@ -8,10 +8,8 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.mysqlclient.MySQLConnectOptions;
 import io.vertx.mysqlclient.MySQLPool;
 import io.vertx.sqlclient.*;
-import myVerticle.service.OperationService;
+import myServer.service.OperationService;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class OperationServiceImpl  implements OperationService {
 
